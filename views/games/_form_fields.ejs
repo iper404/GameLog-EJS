@@ -1,0 +1,34 @@
+<div>
+    <label>Title</label>
+    <input type="text" name="title" value="<%= game.title %>">
+  </div>
+  <div>
+    <label>Console</label>
+    <select name="console">
+    <% consoles.forEach(console => { %>
+      <% if (console.id === game.console) { %>
+        <option selected label="<%= console.name %>" value="<%= console.id %>">
+      <% } else { %>
+        <option label="<%= console.name %>" value="<%= console.id %>">
+      <% } %>
+    <% }) %>
+    </select>
+  </div>
+  <div>
+    <label>Release Date</label>
+    <input type="date" name="releaseDate"
+          value="<%= game.releaseDate == null ? '' : game.releaseDate.toISOString().split('T')[0] %>">
+  </div>
+  <div>
+    <label>Hours Long</label>
+    <input type="number" name="hrsLong" min="1" value="<%= game.hrsLong %>">
+  </div>
+  </div>
+  <div>
+    <label>Cover</label>
+    <input type="file" name="cover">
+  </div>
+  <div>
+    <label>Description</label>
+    <textarea name="description"><%= game.description %></textarea>
+  </div>

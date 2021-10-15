@@ -19,6 +19,12 @@ npm i mongoose
 set up .env library for local 
 	npm i --save-dev dotenv
 
+DATABASE_URL for .env is
+mongodb+srv://user:password@cluster0.npjcq.mongodb.net/test
+
+Current user -> user
+Current password -> zzz
+
 install Heroku CLI
 heroku login
 git push heroku main
@@ -28,5 +34,11 @@ Set up Mongo DB
 	create cluster
 	connect -> db user -> paste in connection link + pw
 
-LEFT OFF EXACTLY AT 7:47 MODELS PART
+npm i body-parser
+
+npm i multer
+
+multer is used for storing files such as cover images
+
+
 
