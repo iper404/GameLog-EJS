@@ -18,3 +18,15 @@ npm i mongoose
 
 set up .env library for local 
 	npm i --save-dev dotenv
+
+install Heroku CLI
+heroku login
+git push heroku main
+	add local variables -> heroku -> settings -> config vars
+
+Set up Mongo DB
+	create cluster
+	connect -> db user -> paste in connection link + pw
+
+LEFT OFF EXACTLY AT 7:47 MODELS PART
+
