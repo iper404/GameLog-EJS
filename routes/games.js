@@ -1,18 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const multer = require('multer')
-const path = require('path')
-const fs = require('fs')
 const Game = require('../models/game')
 const Console = require('../models/console')
-const uploadPath = path.join('public', Game.coverImageBasePath)
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
-const upload = multer({
-  dest: uploadPath,
-  fileFilter: (req, file, callback) => {
-    callback(null, imageMimeTypes.includes(file.mimetype))
-  }
-})
 
 // All Games Route
 router.get('/', async (req, res) => {
@@ -20,11 +10,11 @@ router.get('/', async (req, res) => {
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
-  if (req.query.releasedBefore != null && req.query.releasedBefore != '') {
-    query = query.lte('releaseDate', req.query.releasedBefore)
+  if (req.query.releaseedBefore != null && req.query.releaseedBefore != '') {
+    query = query.lte('releaseDate', req.query.releaseedBefore)
   }
-  if (req.query.releasedAfter != null && req.query.releaseedAfter != '') {
-    query = query.gte('releaseDate', req.query.releasedAfter)
+  if (req.query.releaseedAfter != null && req.query.releaseedAfter != '') {
+    query = query.gte('releaseDate', req.query.releaseedAfter)
   }
   try {
     const games = await query.exec()
@@ -43,38 +33,28 @@ router.get('/new', async (req, res) => {
 })
 
 // Create Game Route
-router.post('/', upload.single('cover'), async (req, res) => {
-  const fileName = req.file != null ? req.file.filename : null
+router.post('/', async (req, res) => {
   const game = new Game({
     title: req.body.title,
     console: req.body.console,
     releaseDate: new Date(req.body.releaseDate),
     hrsLong: req.body.hrsLong,
-    coverImageName: fileName,
     description: req.body.description
   })
+  saveCover(game, req.body.cover)
 
   try {
     const newGame = await game.save()
     // res.redirect(`games/${newGame.id}`)
     res.redirect(`games`)
   } catch {
-    if (game.coverImageName != null) {
-      removeGameCover(game.coverImageName)
-    }
     renderNewPage(res, game, true)
   }
 })
 
-function removeGameCover(fileName) {
-  fs.unlink(path.join(uploadPath, fileName), err => {
-    if (err) console.error(err)
-  })
-}
-
 async function renderNewPage(res, game, hasError = false) {
   try {
-    const games = await Game.find({})
+    const consoles = await Console.find({})
     const params = {
       consoles: consoles,
       game: game
@@ -83,6 +63,15 @@ async function renderNewPage(res, game, hasError = false) {
     res.render('games/new', params)
   } catch {
     res.redirect('/games')
+  }
+}
+
+function saveCover(game, coverEncoded) {
+  if (coverEncoded == null) return
+  const cover = JSON.parse(coverEncoded)
+  if (cover != null && imageMimeTypes.includes(cover.type)) {
+    game.coverImage = new Buffer.from(cover.data, 'base64')
+    game.coverImageType = cover.type
   }
 }
 

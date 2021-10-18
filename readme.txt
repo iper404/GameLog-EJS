@@ -37,8 +37,8 @@ Set up Mongo DB
 npm i body-parser
 
 npm i multer
-
 multer is used for storing files such as cover images
+npm uninstall multer
+no longer needed after filepond
 
-
-
+use FilePond for storing files and integrating with heroku
