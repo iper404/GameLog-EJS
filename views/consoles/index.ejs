@@ -7,4 +7,8 @@
 <br>
 <% consoles.forEach(console => { %>
   <div><%= console.name %></div>
+  <a href="/consoles/<%= console.id %>">View</a>
+  <a href="/consoles/<%= console.id %>/edit">Edit</a>
+  <%- include('../partials/deleteForm',
+              { url: `/consoles/${console.id}` }) %>
 <% }) %>

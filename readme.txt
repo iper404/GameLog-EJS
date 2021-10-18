@@ -42,3 +42,17 @@ npm uninstall multer
 no longer needed after filepond
 
 use FilePond for storing files and integrating with heroku
+insert the scripts into layouts.ejs from documentation for FilePond
+
+install method-override for delete or put requests
+npm i method-override
+include library in server.js
+
+DO NOT USE A router.get for DELETING BECAUSE IT WILL DELETE EVERYTHING
+	use router.delete
+
+to debug try / catch blocks, add:
+catch (err){
+console.log(err)
+...
+}
