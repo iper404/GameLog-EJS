@@ -10,11 +10,11 @@ router.get('/', async (req, res) => {
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
-  if (req.query.releaseedBefore != null && req.query.releaseedBefore != '') {
-    query = query.lte('releaseDate', req.query.releaseedBefore)
+  if (req.query.releasedBefore != null && req.query.releasedBefore != '') {
+    query = query.lte('releaseDate', req.query.releasedBefore)
   }
-  if (req.query.releaseedAfter != null && req.query.releaseedAfter != '') {
-    query = query.gte('releaseDate', req.query.releaseedAfter)
+  if (req.query.releasedAfter != null && req.query.releasedAfter != '') {
+    query = query.gte('releaseDate', req.query.releasedAfter)
   }
   try {
     const games = await query.exec()

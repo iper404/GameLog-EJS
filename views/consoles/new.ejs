@@ -1,7 +1,8 @@
 <h2 class="page-header">New Console</h2>
 <form action="/consoles" method="POST">
   <%- include('_form_fields') %>
-  <!-- link to a partial -->
-  <a href="/consoles">Cancel</a>
-  <button type="submit">Create</button>
+  <div class="form-row form-row-end btn-row">
+    <a class="btn btn-danger" href="/consoles">Cancel</a>
+    <button class="btn btn-primary" type="submit">Create</button>
+  </div>
 </form>
