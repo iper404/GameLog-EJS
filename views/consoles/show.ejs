@@ -5,6 +5,8 @@
 <% if (gamesByConsole.length > 0) { %>
   <h2>Games By Console</h2>
   <% gamesByConsole.forEach(game => { %>
-    <img height="150" width="100" src="<%= game.coverImagePath %>">
+    <a href="/games/<%= game.id %>">
+      <img height="150" width="100" src="<%= game.coverImagePath %>">
+    </a>
   <% }) %>
 <% } %>
