@@ -1,7 +1,2 @@
 <h2 class="page-header">Recently Added</h2>
-<div>
-  <% games.forEach(game => { %>
-    <a href="/games/<%= game.id %>">
-    <img height="100" width="140" src="<%= game.coverImagePath %>">
-  <% }) %>
-</div>
+<%- include('partials/gameGrid', { games: games, large: true }) %>

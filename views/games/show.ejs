@@ -1,10 +1,21 @@
 <h2 class="page-header"><%= game.title %></h2>
-<img width="100" height="150" src="<%= game.coverImagePath %>">
-<div>Console: <%= game.console.name %></div>
-<div>Release Date: <%= game.releaseDate.toDateString() %></div>
-<div>Hour Length: <%= game.hrsLong %></div>
-<div>Description: <%= game.description %></div>
-
-<a href="/games/<%= game.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', { url: `/games/${game.id}` }) %>
-<a href="/consoles/<%= game.console.id %>">View Console</a>
+<div class="game-details">
+  <div>
+    <img class="game-cover" src="<%= game.coverImagePath %>">
+    <div class="game-details-btn-grid">
+      <a class="btn btn-primary" href="/games/<%= game.id %>/edit">Edit</a>
+      <%- include('../partials/deleteForm', { url: `/games/${game.id}` }) %>
+      <a class="btn btn-primary game-details-console-button" href="/consoles/<%= game.console.id %>">View Console</a>
+    </div>
+  </div>
+  <div class="game-details-grid">
+    <div class="game-details-label">Console:</div>
+    <div><%= game.console.name %></div>
+    <div class="game-details-label">Release Date:</div>
+    <div><%= game.releaseDate.toDateString() %></div>
+    <div class="game-details-label">Hour Length:</div>
+    <div><%= game.hrsLong %></div>
+    <div class="game-details-label">Description:</div>
+    <div><%= game.description %></div>
+  </div>
+</div>

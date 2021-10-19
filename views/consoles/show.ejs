@@ -6,9 +6,5 @@
 </div>
 <% if (gamesByConsole.length > 0) { %>
   <h2 class="page-header">Games By Console</h2>
-  <% gamesByConsole.forEach(game => { %>
-    <a href="/games/<%= game.id %>">
-      <img height="100" width="140" src="<%= game.coverImagePath %>">
-    </a>
-  <% }) %>
+  <%- include('../partials/gameGrid', { games: gamesByConsole }) %>
 <% } %>

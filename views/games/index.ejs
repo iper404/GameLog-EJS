@@ -20,10 +20,5 @@
     <button class="btn btn-primary" type="submit">Search</button>
   </div>
 </form>
-<div>
-  <% games.forEach(game => { %>
-    <a href="/games/<%= game.id %>">
-      <img height="100" width="140" src="<%= game.coverImagePath %>">
-    </a>
-  <% }) %>
-</div>
+<br>
+<%- include('../partials/gameGrid', { games: games, large: true }) %>
