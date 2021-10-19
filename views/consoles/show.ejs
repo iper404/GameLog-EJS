@@ -1,4 +1,4 @@
-<h2><%= console.name %></h2>
+<h2 class="page-header"><%= console.name %></h2>
 <a href="/consoles/<%= console.id %>/edit">Edit</a>
 <%- include('../partials/deleteForm',
             { url: `/consoles/${console.id}` }) %>
