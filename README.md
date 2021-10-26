@@ -10,6 +10,8 @@
 
 <h2 align="center">Preview</h2>
 
+![screenshot](https://user-images.githubusercontent.com/48579650/137989963-5b45dcee-e607-400f-a1c6-dc42ba5631f9.PNG)
+
 <h2>Copyright & License</h2>
 &copy Ivan Peric, 2021
 
