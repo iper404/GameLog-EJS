@@ -12,11 +12,13 @@
 </form>
 <br>
 <% consoles.forEach(console => { %>
-  <div><%= console.name %></div>
-  <div class="btn-row">
-    <a class="btn btn-primary" href="/consoles/<%= console.id %>">View</a>
-    <a class="btn btn-primary" href="/consoles/<%= console.id %>/edit">Edit</a>
-    <%- include('../partials/deleteForm',
-                { url: `/consoles/${console.id}` }) %>
+  <div class="console-row">
+    <div class="console-name"><%= console.name %></div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/consoles/<%= console.id %>">View</a>
+      <a class="btn btn-primary" href="/consoles/<%= console.id %>/edit">Edit</a>
+      <%- include('../partials/deleteForm',
+                  { url: `/consoles/${console.id}` }) %>
+    </div>
   </div>
 <% }) %>

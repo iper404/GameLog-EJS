@@ -15,6 +15,10 @@
     <div><%= game.releaseDate.toDateString() %></div>
     <div class="game-details-label">Hour Length:</div>
     <div><%= game.hrsLong %></div>
+    <div class="game-details-label">Current Hours:</div>
+    <div><%= game.currHrs %></div>
+    <div class="game-details-label">Hours Left:</div>
+    <div><%= game.hrsLong-game.currHrs %></div>
     <div class="game-details-label">Description:</div>
     <div><%= game.description %></div>
   </div>

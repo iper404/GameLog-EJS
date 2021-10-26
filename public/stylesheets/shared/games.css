@@ -7,11 +7,19 @@
   .game-cover {
     width: var(--game-cover-width);
     height: calc(var(--game-cover-width) / var(--game-cover-aspect-ratio));
+    transition: all .2s;
   }
   
   .game-cover-large {
     --game-cover-width: var(--game-cover-width-large);
+    transition: all .2s;
   }
+
+  .game-cover:hover, .game-cover:focus, .game-cover-large:hover, .game-cover-large:focus {
+    transform: scale(1.25);
+    box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1; }
   
   .game-grid {
     display: grid;
@@ -40,6 +48,7 @@
     align-items: center;
     grid-gap: 1rem;
     grid-template-columns: auto auto;
+    margin-left: 4rem;
   }
   
   .game-details-btn-grid {

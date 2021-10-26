@@ -16,6 +16,10 @@ const gameSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  currHrs:{
+    type: Number,
+    required: true
+  },
   createdAt: { 
     // why? to display most recent
     type: Date,

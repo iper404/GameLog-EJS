@@ -39,6 +39,7 @@ router.post('/', async (req, res) => {
     console: req.body.console,
     releaseDate: new Date(req.body.releaseDate),
     hrsLong: req.body.hrsLong,
+    currHrs: req.body.currHrs,
     description: req.body.description
   })
   saveCover(game, req.body.cover)
@@ -83,6 +84,7 @@ router.put('/:id', async (req, res) => {
     game.console = req.body.console
     game.releaseDate = new Date(req.body.releaseDate)
     game.hrsLong = req.body.hrsLong
+    game.currHrs = req.body.currHrs
     game.description = req.body.description
     if (req.body.cover != null && req.body.cover !== '') {
       saveCover(game, req.body.cover)
