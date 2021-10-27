@@ -76,3 +76,9 @@
     color: var(--color-text-light);
     font-size: inherit;
   }
+
+  .check{
+    height: 1rem;
+    width: 1rem;
+    margin-left: 1rem;
+  }

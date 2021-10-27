@@ -1,7 +1,7 @@
 :root {
-    --game-cover-width: 300px;
-    --game-cover-width-large: 450px;
-    --game-cover-aspect-ratio: 1.33;
+    --game-cover-width: 150px;
+    --game-cover-width-large: 300px;
+    --game-cover-aspect-ratio: .72;
   }
   
   .game-cover {

@@ -10,11 +10,11 @@ router.get('/', async (req, res) => {
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
-  if (req.query.releasedBefore != null && req.query.releasedBefore != '') {
-    query = query.lte('releaseDate', req.query.releasedBefore)
+  if (req.query.startedBefore != null && req.query.startedBefore != '') {
+    query = query.lte('startDate', req.query.startedBefore)
   }
-  if (req.query.releasedAfter != null && req.query.releasedAfter != '') {
-    query = query.gte('releaseDate', req.query.releasedAfter)
+  if (req.query.startedAfter != null && req.query.startedAfter != '') {
+    query = query.gte('startDate', req.query.startedAfter)
   }
   try {
     const games = await query.exec()
@@ -37,9 +37,11 @@ router.post('/', async (req, res) => {
   const game = new Game({
     title: req.body.title,
     console: req.body.console,
-    releaseDate: new Date(req.body.releaseDate),
+    startDate: new Date(req.body.startDate),
     hrsLong: req.body.hrsLong,
     currHrs: req.body.currHrs,
+    completed: req.body.completed,
+    nowPlaying: req.body.nowPlaying,
     description: req.body.description
   })
   saveCover(game, req.body.cover)
@@ -82,10 +84,13 @@ router.put('/:id', async (req, res) => {
     game = await Game.findById(req.params.id)
     game.title = req.body.title
     game.console = req.body.console
-    game.releaseDate = new Date(req.body.releaseDate)
+    game.startDate = new Date(req.body.startDate)
     game.hrsLong = req.body.hrsLong
     game.currHrs = req.body.currHrs
+    game.completed = Boolean(req.body.completed)
+    game.nowPlaying = Boolean(req.body.nowPlaying)
     game.description = req.body.description
+
     if (req.body.cover != null && req.body.cover !== '') {
       saveCover(game, req.body.cover)
     }

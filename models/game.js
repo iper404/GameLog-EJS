@@ -8,7 +8,7 @@ const gameSchema = new mongoose.Schema({
   description: {
     type: String
   },
-  releaseDate: {
+  startDate: {
     type: Date,
     required: true
   },
@@ -19,6 +19,16 @@ const gameSchema = new mongoose.Schema({
   currHrs:{
     type: Number,
     required: true
+  },
+  completed:{
+    type: Boolean,
+    default: false,
+    required: false
+  },
+  nowPlaying:{
+    type: Boolean,
+    default: false,
+    required: false
   },
   createdAt: { 
     // why? to display most recent

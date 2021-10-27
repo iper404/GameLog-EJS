@@ -11,14 +11,18 @@
   <div class="game-details-grid">
     <div class="game-details-label">Console:</div>
     <div><%= game.console.name %></div>
-    <div class="game-details-label">Release Date:</div>
-    <div><%= game.releaseDate.toDateString() %></div>
+    <div class="game-details-label">Start Date:</div>
+    <div><%= game.startDate.toDateString() %></div>
     <div class="game-details-label">Hour Length:</div>
     <div><%= game.hrsLong %></div>
     <div class="game-details-label">Current Hours:</div>
     <div><%= game.currHrs %></div>
     <div class="game-details-label">Hours Left:</div>
     <div><%= game.hrsLong-game.currHrs %></div>
+    <div class="game-details-label">Completed?</div>
+    <div><%= game.completed %></div>
+    <div class="game-details-label">Now Playing?</div>
+    <div><%= game.nowPlaying %></div>
     <div class="game-details-label">Description:</div>
     <div><%= game.description %></div>
   </div>
