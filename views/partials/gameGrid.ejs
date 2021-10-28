@@ -2,8 +2,11 @@
 <% gameGridClass = locals.large ? 'game-grid-large' : '' %>
 <div class="game-grid <%= gameGridClass %>">
   <% games.forEach(game => { %>
-    <a href="/games/<%= game.id %>">
+    <a class="game-info" href="/games/<%= game.id %>">
       <img class="game-cover <%= gameCoverClass %>" src="<%= game.coverImagePath %>">
+      <div class="game-text">Current Hours: <%= game.currHrs %></div>
+      <div class="game-text">Total Hours: <%= game.hrsLong %></div>
+      <div class="game-text">Progress: <%= game.currHrs/game.hrsLong * 100 %>%</div>
     </a>
   <% }) %>
 </div>

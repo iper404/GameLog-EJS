@@ -67,3 +67,11 @@
     grid-area: console;
     justify-self: stretch;
   }
+
+ a.game-info{
+   text-decoration: none;
+   font-size: 1.05rem;
+   font-weight: 500;
+   align-self: flex-start;
+   color: var(--color-text-light);
+ }
