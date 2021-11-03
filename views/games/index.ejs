@@ -2,22 +2,44 @@
 <form action="/games" method="GET">
   <div class="form-row">
     <div class="form-item">
-      <label>Title</label>
+      <label>Title: </label>
       <input type="text" name="title" value="<%= searchOptions.title %>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-item">
-      <label>Started After</label>
-      <input type="date" name="startedAfter" value="<%= searchOptions.startedAfter %>">
+      <label class="hrs">Current Play Time Greater Than:</label>
+      <input type="number" name="currHrsGte" value="<%= searchOptions.currHrsGte %>">
     </div>
     <div class="form-item">
-      <label>Started Before</label>
-      <input type="date" name="startedBefore" value="<%= searchOptions.startedBefore %>">
+      <label class="hrs">Current Play Time Less Than:</label>
+      <input type="number" name="currHrsLte" value="<%= searchOptions.currHrsLte %>">
+    </div>
+    <div class="form-item">
+      <label class="hrs">Total Game Hours Greater Than:</label>
+      <input type="number" name="totalHrsGte" value="<%= searchOptions.totalHrsGte %>">
+    </div>
+    <div class="form-item">
+      <label class="hrs">Total Game Hours Less Than:</label>
+      <input type="number" name="totalHrsLte" value="<%= searchOptions.totalHrsLte %>">
     </div>
   </div>
   <div class="form-row form-row-end">
     <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+  <div class="form-row">
+    <div class="form-item">
+      <label>Filter By:</label>
+      <button type="submit" class="btn btn-primary" name="nowPlaying" 
+      value="<%= Boolean(searchOptions.nowPlaying = true) %>"> 
+        Now Playing? </button>
+    </div>
+    <div class="form-item">
+      <label><br></label>
+      <button type="submit" class="btn btn-primary" name="completed" 
+      value="<%= Boolean(searchOptions.completed = true) %>"> 
+          Completed </button>
+    </div>
   </div>
 </form>
 <br>

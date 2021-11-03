@@ -10,12 +10,25 @@ router.get('/', async (req, res) => {
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
-  if (req.query.startedBefore != null && req.query.startedBefore != '') {
-    query = query.lte('startDate', req.query.startedBefore)
+  if (req.query.currHrsGte != null && req.query.currHrsGte != '') {
+    query = query.gte('currHrs', req.query.currHrsGte)
   }
-  if (req.query.startedAfter != null && req.query.startedAfter != '') {
-    query = query.gte('startDate', req.query.startedAfter)
+  if (req.query.currHrsLte != null && req.query.currHrsLte != '') {
+    query = query.lte('currHrs', req.query.currHrsLte)
   }
+  if (req.query.totalHrsLte != null && req.query.totalHrsLte != '') {
+    query = query.lte('hrsLong', req.query.totalHrsLte)
+  }
+  if (req.query.totalHrsGte != null && req.query.totalHrsGte != '') {
+    query = query.gte('hrsLong', req.query.totalHrsGte)
+  }
+  if (req.query.nowPlaying != null && req.query.nowPlaying != '') {
+    query = query.where('nowPlaying', req.query.nowPlaying)
+  }
+  if (req.query.completed != null && req.query.completed != '') {
+    query = query.where('completed', req.query.completed)
+  }
+  console.log(req.query)
   try {
     const games = await query.exec()
     res.render('games/index', {

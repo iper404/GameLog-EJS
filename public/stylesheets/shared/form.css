@@ -27,7 +27,8 @@
   }
   
   .form-row-end {
-    justify-content: flex-end;
+    justify-content: center;
+    margin-top: 1rem;
   }
   
   .form-item > label {
@@ -75,10 +76,4 @@
   .filepond--drop-label {
     color: var(--color-text-light);
     font-size: inherit;
-  }
-
-  .check{
-    height: 1rem;
-    width: 1rem;
-    margin-left: 1rem;
   }

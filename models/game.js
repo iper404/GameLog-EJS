@@ -28,7 +28,7 @@ const gameSchema = new mongoose.Schema({
   nowPlaying:{
     type: Boolean,
     default: false,
-    required: false
+    required: true
   },
   createdAt: { 
     // why? to display most recent
