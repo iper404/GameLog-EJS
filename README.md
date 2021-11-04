@@ -1,6 +1,8 @@
 <h1 align="center">GameLog</h1>
-<h3 align="center">**Under Construction**<br>Web App (Future iOS & Android App)</h3>
+<h3 align="center">Web App</h3>
 
+<h3 align="left">Link to a live demo:</h3>
+<p align="left">https://gamelog-ejs-iper404.herokuapp.com/</p>
 
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> Node.js, Express, MongoDB, HTML, CSS, JavaScript</p>
