@@ -1,4 +1,4 @@
-<% gameCoverClass = games.console === 'Nintendo DS' ? 'game-cover-ds' : 'game-cover-large' %>
+<% gameCoverClass = locals.large ? 'game-cover-large' : '' %>
 <% gameGridClass = locals.large ? 'game-grid-large' : '' %>
 <div class="game-grid <%= gameGridClass %>">
   <% games.forEach(game => { %>
