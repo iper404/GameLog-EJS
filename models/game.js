@@ -48,12 +48,7 @@ const gameSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'Console'
-  },
-  user: { // Add a reference to the User model
-    type: String,
-    required: true,
-    ref: 'User'
-  }  
+  }
 })
 
 gameSchema.virtual('coverImagePath').get(function() {
