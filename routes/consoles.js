@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Console = require('../models/console')
 const Game = require('../models/game')
+const User = require('../models/user'); // Import the User model
 
 // All Consoles Route
 router.get('/', async (req, res) => {
