@@ -1,12 +1,16 @@
+// routes\games.js
+
 const express = require('express')
 const router = express.Router()
 const Game = require('../models/game')
 const Console = require('../models/console')
+const User = require('../models/user'); // Import the User model
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const { isAuthenticated } = require('./middleware');
 
 // All Games Route
-router.get('/', async (req, res) => {
-  let query = Game.find()
+router.get('/', isAuthenticated, async (req, res) => {
+  let query = Game.find({ user: req.user.uid }); // Fetch data only for the currently logged-in user
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
@@ -41,12 +45,12 @@ router.get('/', async (req, res) => {
 })
 
 // New Game Route
-router.get('/new', async (req, res) => {
+router.get('/new', isAuthenticated, async (req, res) => { // Protect route using isAuthenticated middleware
   renderNewPage(res, new Game())
-})
+});
 
 // Create Game Route
-router.post('/', async (req, res) => {
+router.post('/', isAuthenticated, async (req, res) => { // Protect route using isAuthenticated middleware
   const game = new Game({
     title: req.body.title,
     console: req.body.console,
@@ -55,20 +59,27 @@ router.post('/', async (req, res) => {
     currHrs: req.body.currHrs,
     completed: req.body.completed,
     nowPlaying: req.body.nowPlaying,
-    description: req.body.description
-  })
+    description: req.body.description,
+    user: req.user.uid // Add userId when creating a new game
+  });
+
   saveCover(game, req.body.cover)
 
   try {
-    const newGame = await game.save()
-    res.redirect(`games/${newGame.id}`)
-  } catch {
-    renderNewPage(res, game, true)
+    const newGame = await game.save();
+    res.redirect(`games/${newGame.id}`);
+  } catch (error) {
+    console.log('Error:', error); // Log the error
+    if (game) {
+      renderNewPage(res, game, true);
+    } else {
+      res.redirect('/games');
+    }
   }
-})
+});
 
 // Show Game Route
-router.get('/:id', async (req, res) => {
+router.get('/:id', isAuthenticated, async (req, res) => { // Protect route using isAuthenticated middleware
   try {
     const game = await Game.findById(req.params.id)
                            .populate('console')
@@ -80,7 +91,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // Edit Game Route
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', isAuthenticated, async (req, res) => { // Protect route using isAuthenticated middleware
   try {
     const game = await Game.findById(req.params.id)
     renderEditPage(res, game)
@@ -90,9 +101,8 @@ router.get('/:id/edit', async (req, res) => {
 })
 
 // Update Game Route
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAuthenticated, async (req, res) => { // Protect route using isAuthenticated middleware
   let game
-
   try {
     game = await Game.findById(req.params.id)
     game.title = req.body.title
@@ -107,19 +117,19 @@ router.put('/:id', async (req, res) => {
     if (req.body.cover != null && req.body.cover !== '') {
       saveCover(game, req.body.cover)
     }
-    await game.save()
-    res.redirect(`/games/${game.id}`)
+    await game.save();
+    res.redirect(`/games/${game.id}`);
   } catch {
-    if (game != null) {
-      renderEditPage(res, game, true)
+    if (game) {
+      renderEditPage(res, game, true);
     } else {
-      res.redirect('/')
+      res.redirect('/games');
     }
   }
-})
+});
 
 // Delete Game Page
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated, async (req, res) => { // Protect route using isAuthenticated middleware
   let game
   try {
     game = await Game.findById(req.params.id)
@@ -166,7 +176,7 @@ async function renderFormPage(res, game, form, hasError = false) {
 }
 
 function saveCover(game, coverEncoded) {
-  if (coverEncoded == null) return
+  if (coverEncoded == null || coverEncoded === '') return
   const cover = JSON.parse(coverEncoded)
   if (cover != null && imageMimeTypes.includes(cover.type)) {
     game.coverImage = new Buffer.from(cover.data, 'base64')

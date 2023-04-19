@@ -1,11 +1,17 @@
+<!-- views/partials/header.ejs -->
 <header>
   <nav class="header-nav">
     <a class="header-title" href="/">GameLog</a>
     <ul>
+      <% if (locals.user && locals.user.email) { %> <!-- Check if user is defined and has an email -->
+        <% const username = locals.user.email.split('@')[0]; %> <!-- Extract the username part of the email -->
+        <li>Welcome, <%= username %>!</li> <!-- Display the username -->
+      <% } %>
       <li><a href="/consoles">Consoles</a></li>
       <li><a href="/consoles/new">Add Console</a></li>
       <li><a href="/games">Games</a></li>
       <li><a href="/games/new">Add Game</a></li>
+      <li><a href="/logout">Logout</a></li>
     </ul>
   </nav>
 </header>
