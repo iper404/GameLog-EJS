@@ -27,14 +27,20 @@ GameLog-EJS is a web application that allows users to track and manage their vid
 1. Clone the repository to your local machine.
 ```bash
 git clone https://github.com/iper404/GameLog-EJS
+```
 
 2. Change to the project directory.
+```bash
 cd GameLog-EJS
+```
 
 3. Install the required dependencies.
+```bash
 npm install
+```
 
 4. Create a .env file in the root directory and configure the following environment variables:
+```bash
 MONGODB_URI=<your_mongodb_uri>
 FIREBASE_API_KEY=<your_firebase_api_key>
 FIREBASE_AUTH_DOMAIN=<your_firebase_auth_domain>
@@ -42,12 +48,17 @@ FIREBASE_PROJECT_ID=<your_firebase_project_id>
 FIREBASE_STORAGE_BUCKET=<your_firebase_storage_bucket>
 FIREBASE_MESSAGING_SENDER_ID=<your_firebase_messaging_sender_id>
 FIREBASE_APP_ID=<your_firebase_app_id>
+```
 
 5. Start the application.
+```bash
 node server.js
+```
 
-6. Open your browser and navigate to http://localhost:3000.
-
+6. Open your browser and navigate to:
+```bash 
+http://localhost:3000.
+```
 
 <h2>About this Project</h2>
 <p align="left">Game Log is a web app which allows the user to track the video games that they are currently playing. The user can search for games, add games to their list, and input the current amount of hours they put into playing the game. The game length in hours will be stored as a characteristic of each game, and the user will be able to track how many hours they have left to beat a game they are currently playing. The user will be able to view all games, in-progress games, and completed games. There are many more features that will be added in the future, including sorting & user registration. 
