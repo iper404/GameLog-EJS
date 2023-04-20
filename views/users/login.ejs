@@ -17,8 +17,12 @@
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
     <br>
-    <button type="submit">Log In</button>
+    <button class="login-card-button" type="submit">Log In as User</button>
   </form>
+    <!-- Log in as Guest Button -->
+    <form action="/users/login/guest" method="post">
+      <button class="login-card-button" type="submit">Log in as Guest</button>
+    </form>
   <div>
     <p>New to GameLog? <a href="/users/register">Register</a></p>
   </div>

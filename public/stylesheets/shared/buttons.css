@@ -1,3 +1,4 @@
+/* shared/buttons.css */
 :root {
   --color-btn-primary-background: hsl(var(--color-base-hue), 100%, 83%);
   --color-btn-primary-background-dark: hsl(var(--color-base-hue), 100%, 73%);
@@ -52,4 +53,38 @@
 .btn-danger:hover {
   color: var(--color-btn-danger-text-dark);
   background-color: var(--color-btn-danger-background-dark);
+}
+
+.guest-card-button {
+  background-color: var(--color-primary); /* Use a predefined color variable */
+  border: none;
+  border-radius: 5px;
+  color: var(--color-text-light);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.guest-card-button:hover {
+  background-color: var(--color-primary-darker); /* Use a darker shade on hover */
+}
+
+.guest-card-button, .login-card-button {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.guest-card-button:hover, .login-card-button:hover {
+  background: var(--color-primary-dark);
 }

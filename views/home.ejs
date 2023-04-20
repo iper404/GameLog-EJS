@@ -1,4 +1,3 @@
-<!-- views/home.ejs -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,24 +7,35 @@
 <body>
   <h1>Welcome to GameLog</h1>
   <p>Track the video games you're playing.</p>
-  
-  <!-- Login Form -->
-  <% if (locals.errorMessage) { %>
-    <p class="error-message"><%= errorMessage %></p>
-  <% } %>
-  <form action="/users/login" method="post">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <button type="submit">Log In</button>
-  </form>
-  
-  <!-- Link to the registration page -->
-  <div>
-    <p>New to GameLog? <a href="/users/register">Register</a></p>
+
+  <!-- Log in as Guest Card -->
+  <div class="guest-card">
+    <p class="guest-card-title">Want to test the app out?</p>
+    <form action="/users/login/guest" method="post">
+      <button class="guest-card-button" type="submit">Log in as Guest</button>
+    </form>
+  </div>
+
+  <!-- Login Card -->
+  <div class="login-card">
+    <% if (locals.errorMessage) { %>
+      <p class="error-message"><%= errorMessage %></p>
+    <% } %>
+    <form action="/users/login" method="post">
+      <p class="guest-card-title">Log in with your account: </p> 
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <button class="login-card-button" type="submit">Log In</button>
+    </form>
+  </div>
+
+  <!-- Register Link -->
+  <div class="register-link">
+    <p>New to GameLog? <a class="register-anchor" href="/users/register">Register</a></p>
   </div>
 </body>
 </html>

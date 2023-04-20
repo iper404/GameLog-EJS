@@ -1,3 +1,5 @@
+/* shared/form.css */
+
 :root {
     --form-label-font-size: 1.2rem;
     --form-input-background-color: hsl(var(--color-base-hue), 100%, 31%);
@@ -77,3 +79,71 @@
     color: var(--color-text-light);
     font-size: inherit;
   }
+
+  .guest-card {
+  background-color: var(--color-background-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+  .guest-card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.guest-card, .login-card {
+  background: var(--color-background-light);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.guest-card-title, .login-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.register-anchor {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.register-anchor:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Transparent input fields */
+input[type="email"], input[type="password"] {
+  background: transparent;
+  border: 1px solid var(--color-text-light); /* Change this color to match your design */
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-text-light); /* Change this color to match your design */
+  border-radius: 10px; /* Add border-radius for rounded outline */
+  transition: border-color 0.2s;
+}
+
+input[type="email"] {
+  margin-left: 2rem;
+}
+
+/* Add focus style for the input fields */
+input[type="email"]:focus, input[type="password"]:focus {
+  border-color: var(--color-primary); /* Change this color to match your design */
+  outline: none;
+}
+

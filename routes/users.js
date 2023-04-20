@@ -44,6 +44,16 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.post('/login/guest', async (req, res) => {
+  try {
+    // Sign in the user anonymously
+    const userCredential = await firebase.auth().signInAnonymously();
+    res.redirect('/dashboard');
+  } catch (error) {
+    res.render('login', { errorMessage: 'Error logging in as a guest: ' + error.message });
+  }
+});
+
 // Other routes (e.g., register, logout)...
 
 module.exports = router;
